@@ -1,9 +1,10 @@
 import AdminDashboard from '../AdminDashboard';
+import type { Reservation } from '@shared/schema';
 
 //todo: remove mock functionality
-const mockReservations = [
+const mockReservations: Reservation[] = [
   {
-    id: 1,
+    id: "1",
     date: "2024-10-15",
     time: "14:00",
     name: "김철수",
@@ -13,10 +14,13 @@ const mockReservations = [
     priceRange: "2만원대",
     service: "커트",
     email: "student1@example.com",
-    studentId: "2024001"
+    studentId: "2024001",
+    additionalNotes: null,
+    photoUrl: null,
+    createdAt: new Date()
   },
   {
-    id: 2,
+    id: "2",
     date: "2024-10-16",
     time: "15:30",
     name: "이영희",
@@ -26,7 +30,10 @@ const mockReservations = [
     priceRange: "3만원대",
     service: "염색",
     email: "student2@example.com",
-    studentId: "2024002"
+    studentId: "2024002",
+    additionalNotes: null,
+    photoUrl: null,
+    createdAt: new Date()
   }
 ];
 

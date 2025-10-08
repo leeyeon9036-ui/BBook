@@ -1,22 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { LogOut } from "lucide-react";
-
-interface Reservation {
-  id: number;
-  date: string;
-  time: string;
-  name: string;
-  school: string;
-  phone: string;
-  location: string;
-  priceRange: string;
-  service: string;
-  email: string;
-  studentId: string;
-  additionalNotes?: string;
-  photoUrl?: string;
-}
+import type { Reservation } from "@shared/schema";
 
 interface AdminDashboardProps {
   reservations: Reservation[];
