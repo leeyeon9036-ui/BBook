@@ -15,12 +15,49 @@ export default function Home() {
   };
 
   const handleReservationSubmit = async (data: any) => {
-    console.log('Reservation submitted:', data);
-    
-    toast({
-      title: "예약 신청 완료!",
-      description: "곧 연락드리겠습니다.",
-    });
+    try {
+      const formData = new FormData();
+      
+      formData.append('date', data.date);
+      formData.append('time', data.time);
+      formData.append('name', data.name);
+      formData.append('phone', data.phone);
+      formData.append('school', data.school);
+      formData.append('studentId', data.studentId);
+      formData.append('email', data.email);
+      formData.append('location', data.location);
+      formData.append('priceRange', data.priceRange);
+      formData.append('service', data.service);
+      
+      if (data.additionalNotes) {
+        formData.append('additionalNotes', data.additionalNotes);
+      }
+      
+      if (data.photo) {
+        formData.append('photo', data.photo);
+      }
+
+      const response = await fetch('/api/reservations', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create reservation');
+      }
+
+      toast({
+        title: "예약 신청 완료!",
+        description: "곧 연락드리겠습니다.",
+      });
+    } catch (error) {
+      console.error('Error submitting reservation:', error);
+      toast({
+        title: "예약 신청 실패",
+        description: "다시 시도해주세요.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
